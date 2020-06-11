@@ -16,6 +16,10 @@ buildscript {
     ext.kotlinVersion = "1.3.72"
     ext.javaVersion = "1.8"
 
+    ext.testConfig = [
+            junitVersion: "4.13"
+    ]
+
     repositories {
         google()
         jcenter()

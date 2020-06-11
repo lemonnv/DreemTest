@@ -33,7 +33,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation project(':domain')
+
+    // Test
+    testImplementation "junit:junit:${testConfig.junitVersion}"
+
+    // Network - Retrofit
+    def retrofitVersion = "2.8.1"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation("com.squareup.okhttp3:logging-interceptor:4.6.0")
 
 }
