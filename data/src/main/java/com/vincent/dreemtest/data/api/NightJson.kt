@@ -1,6 +1,6 @@
 package com.vincent.dreemtest.data.api
 
-import com.vincent.dreemtest.domain.entity.SleepAnalysis
+import com.vincent.dreemtest.domain.entity.Night
 import com.vincent.dreemtest.domain.entity.SleepStage
 import com.vincent.dreemtest.domain.entity.SleepStageValue
 import java.lang.RuntimeException
@@ -9,7 +9,7 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-data class SleepAnalysisJson(
+data class NightJson(
     val id: String,
     val timezone: String,
     val record_start_time: Long,
@@ -25,9 +25,9 @@ data class SleepAnalysisJson(
     val hypnogram: List<Int>
 ) {
 
-    internal fun toEntity(): SleepAnalysis {
+    internal fun toEntity(): Night {
         val zoneId = ZoneId.of(timezone)
-        return SleepAnalysis(
+        return Night(
             id = id,
             recordDateRange = zoneDateTimeOf(
                 record_start_time,
@@ -44,7 +44,7 @@ data class SleepAnalysisJson(
                 zoneId
             ),
             sleepOnsetDuration = Duration.ofSeconds(sleep_onset_duration),
-            score = sleep_score,
+            sleepScore = sleep_score,
             numberOfStimulation = nb_stimulations,
             numberOfMove = nb_moves,
             heartRateAverage = mean_heart_rate,

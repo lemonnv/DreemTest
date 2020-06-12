@@ -1,17 +1,16 @@
 package com.vincent.dreemtest.data
 
-import com.vincent.dreemtest.domain.repository.SleepAnalysisRepository
+import com.vincent.dreemtest.domain.repository.NightRepository
 import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
 import org.koin.core.context.startKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
 
-class SleepAnalysisRepositoryTest: KoinTest {
+class NightRepositoryTest: KoinTest {
 
-    private val repository: SleepAnalysisRepository by inject()
+    private val repository: NightRepository by inject()
 
     @Before
     fun setup() {
@@ -22,7 +21,7 @@ class SleepAnalysisRepositoryTest: KoinTest {
 
 
     @Test
-    fun getSleepAnalysisIsCorrect() {
-        repository.getSleepAnalysis()
+    fun getAllNightsIsCorrect() {
+        repository.getAllNights()
     }
 }

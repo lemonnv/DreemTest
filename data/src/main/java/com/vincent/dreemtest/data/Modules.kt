@@ -1,8 +1,8 @@
 package com.vincent.dreemtest.data
 
-import com.vincent.dreemtest.data.api.SleepService
-import com.vincent.dreemtest.data.repository.SleepAnalysisRepositoryImpl
-import com.vincent.dreemtest.domain.repository.SleepAnalysisRepository
+import com.vincent.dreemtest.data.api.NightService
+import com.vincent.dreemtest.data.repository.NightRepositoryImpl
+import com.vincent.dreemtest.domain.repository.NightRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -20,9 +20,9 @@ val dataModule = module {
             .build())
         .build()
     }
-    factory { get<Retrofit>().create(SleepService::class.java) }
+    factory { get<Retrofit>().create(NightService::class.java) }
 
     // Repository
-    factory<SleepAnalysisRepository> { SleepAnalysisRepositoryImpl(get()) }
+    factory<NightRepository> { NightRepositoryImpl(get()) }
 
 }

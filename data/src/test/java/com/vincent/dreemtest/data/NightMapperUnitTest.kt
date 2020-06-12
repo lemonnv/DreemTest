@@ -1,6 +1,6 @@
 package com.vincent.dreemtest.data
 
-import com.vincent.dreemtest.data.api.SleepAnalysisJson
+import com.vincent.dreemtest.data.api.NightJson
 import com.vincent.dreemtest.data.api.sleepStageOf
 import org.junit.Test
 
@@ -13,7 +13,7 @@ import java.time.ZonedDateTime
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class SleepAnalysisMapperUnitTest {
+class NightMapperUnitTest {
 
     @Test
     fun hypnogramIsEmpty() {
@@ -41,7 +41,7 @@ class SleepAnalysisMapperUnitTest {
     }
 
     private fun createJson(hypnogram: List<Int>) =
-        SleepAnalysisJson(
+        NightJson(
             "",
             ZoneId.systemDefault().id,
             ZonedDateTime.now().withSecond(0).toEpochSecond(),
