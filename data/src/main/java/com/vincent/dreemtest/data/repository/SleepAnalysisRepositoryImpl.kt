@@ -6,8 +6,8 @@ import com.vincent.dreemtest.domain.repository.SleepAnalysisRepository
 
 class SleepAnalysisRepositoryImpl(private val remoteService: SleepService): SleepAnalysisRepository {
 
-    override fun getSleepAnalysis(): List<SleepAnalysis> {
-       return listOf(remoteService.getSleepAnalysis().execute().body()!!.toEntity())
+    override fun getSleepAnalysis(): SleepAnalysis {
+       return remoteService.getSleepAnalysis().execute().body()!!.toEntity()
     }
 
 }
