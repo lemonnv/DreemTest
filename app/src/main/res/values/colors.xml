@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff0064</color>
-    <color name="colorPrimaryDark">#111958</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorPrimary">@color/primary500</color>
+    <color name="colorPrimaryDark">@color/background500</color>
+    <color name="colorAccent">@color/primary500</color>
+
+    <color name="background500">#111958</color>
+    <color name="onBackground500">#FFFFFF</color>
+    <color name="surface500">#EEECF6</color>
+    <color name="onSurface500">#65656e</color>
+    <color name="primary500">#ff0064</color>
 </resources>

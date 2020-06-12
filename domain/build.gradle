@@ -1,5 +1,15 @@
 apply plugin: 'kotlin'
 
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xallow-result-return-type"]
+    }
+}
+
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
@@ -12,6 +22,3 @@ dependencies {
     testApi "org.koin:koin-test:$koinVersion"
 
 }
-
-sourceCompatibility = javaVersion
-targetCompatibility = javaVersion
