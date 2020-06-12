@@ -39,9 +39,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-    testImplementation 'junit:junit:4.13'
+    //implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation project(':domain')
+    implementation project(':data')
+
+    // Test
+    testImplementation "junit:junit:${testConfig.junitVersion}"
+
+    // DI - Koin
+    implementation "org.koin:koin-android-viewmodel:$koinVersion"
 
     // AndroidX
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
