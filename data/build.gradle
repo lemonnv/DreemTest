@@ -37,6 +37,11 @@ dependencies {
 
     // Test
     testImplementation "junit:junit:${testConfig.junitVersion}"
+    androidTestImplementation "org.koin:koin-test:$koinVersion"
+
+    androidTestImplementation 'androidx.test:core:1.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
 
     // Network - Retrofit
     def retrofitVersion = "2.8.1"

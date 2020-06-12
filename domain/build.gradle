@@ -9,6 +9,7 @@ dependencies {
 
     // DI - Koin
     api "org.koin:koin-android:$koinVersion"
+    testApi "org.koin:koin-test:$koinVersion"
 
 }
 
