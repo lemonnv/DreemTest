@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/galanogrotesque_light</item>
+    </style>
+    <style name="TextAppearance.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/galanogrotesque_light</item>
+    </style>
+    <style name="TextAppearance.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/galanogrotesque_semibold</item>
+    </style>
+    <style name="TextAppearance.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/galanogrotesque_semibold</item>
+    </style>
+
+    <style name="TextAppearance.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/galanogrotesque_semibold</item>
+    </style>
+
+    <style name="TextAppearance.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/galanogrotesque_semibold</item>
+    </style>
+
+
+
+</resources>
