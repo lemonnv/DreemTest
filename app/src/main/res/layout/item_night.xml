@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.vincent.dreemtest.dashboard.NightCardViewModel" />
+
         <variable
             name="listener"
-            type="com.vincent.dreemtest.common.adapter.DataBindingAdapter.OnItemClickListener"
-            />
+            type="com.vincent.dreemtest.common.adapter.DataBindingAdapter.OnItemClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
         style="@style/NightCard"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:onClick="@{() -> listener.onItemClick(viewModel)}"
         android:layout_marginHorizontal="@dimen/space_3"
-        android:layout_marginTop="@dimen/space_3">
+        android:layout_marginTop="@dimen/space_3"
+        android:onClick="@{() -> listener.onItemClick(viewModel)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:padding="@dimen/space_3">
 
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_2"
-                android:layout_marginTop="@dimen/space_2"
-                android:text="@{viewModel.title}"
+                binding:date="@{viewModel.date}"
+                binding:format="@{@string/night_date_format}"
                 android:textAppearance="@style/TextAppearance.Headline5"
                 android:textColor="@color/onSurface500"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,18 +41,58 @@
                 tools:text="Last night" />
 
             <TextView
-                android:id="@+id/textScore"
+                android:id="@+id/textDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_2"
-                android:gravity="end"
-                android:text="@{viewModel.sleepScore}"
+                android:text="@string/night_sleep_duration"
                 android:textAppearance="@style/TextAppearance.Body"
+                android:textColor="@color/onSurface500"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/quality" />
+
+            <TextView
+                android:id="@+id/textDurationValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Headline6"
                 android:textColor="@color/primary500"
-                app:layout_constraintBottom_toBottomOf="@+id/textTitle"
+                app:layout_constraintStart_toStartOf="@id/textDuration"
+                app:layout_constraintTop_toBottomOf="@id/textDuration"
+                binding:format="@{@string/night_time_format}"
+                binding:time="@{viewModel.sleepDuration}"
+                tools:text="04:34" />
+
+            <TextView
+                android:id="@+id/textOnsetDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/night_onset_duration"
+                app:layout_constraintBottom_toTopOf="@+id/textOnsetDurationValue"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textAppearance="@style/TextAppearance.Body"
+                android:textColor="@color/onSurface500" />
+
+            <TextView
+                android:id="@+id/textOnsetDurationValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Headline6"
+                android:textColor="@color/primary500"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                binding:format="@{@string/night_time_format}"
+                binding:time="@{viewModel.sleepOnsetDuration}"
+                tools:text="03:34" />
+
+            <com.vincent.dreemtest.common.component.QualityView
+                android:id="@+id/quality"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/space_3"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textTitle"
-                tools:text="Score: 84" />
+                app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

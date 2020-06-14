@@ -17,4 +17,5 @@
     <string name="sleep_stage_unknown">Off</string>
     <string name="night_onset_duration">Onset duration</string>
     <string name="night_moves">Moves</string>
+    <string name="night_sleep_duration">Sleep duration</string>
 </resources>
