@@ -13,5 +13,5 @@ data class Night(
     val numberOfStimulation: Int,
     val numberOfMove: Int,
     val heartRateAverage: Float,
-    val hypnogram: List<SleepStageValue>
+    val hypnogram: List<HypnogramSlice>
 ): Serializable

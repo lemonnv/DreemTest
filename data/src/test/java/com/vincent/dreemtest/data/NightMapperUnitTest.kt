@@ -2,9 +2,12 @@ package com.vincent.dreemtest.data
 
 import com.vincent.dreemtest.data.api.NightJson
 import com.vincent.dreemtest.data.api.sleepStageOf
+import com.vincent.dreemtest.domain.entity.HypnogramSlice
+import com.vincent.dreemtest.domain.entity.SleepStage
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
@@ -15,37 +18,33 @@ import java.time.ZonedDateTime
  */
 class NightMapperUnitTest {
 
+    private val zoneId = ZoneId.systemDefault()
+
     @Test
     fun hypnogramIsEmpty() {
-        val json = createJson(listOf())
+        val json = createJson(listOf(), 0)
         val entity = json.toEntity()
         assertEquals(0, entity.hypnogram.size)
     }
 
     @Test
     fun hypnogramOfFiveMinutesIsCorrect() {
-        val json = createJson(listOf(0, 0, 1, 1, 2, 2, 3, 3, -1, -1))
+        val json = createJson(listOf(0, 0, 1, 1, 2, 2, 3, 3, 4, 4, -1, -1), 0)
         val entity = json.toEntity()
-        assertEquals(json.hypnogram.size, entity.hypnogram.size)
-        for (i in entity.hypnogram.indices) {
-            assertEquals(
-                json.record_start_time + i * 30,
-                entity.hypnogram[i].dateRange.start.toEpochSecond()
-            )
-            assertEquals(
-                json.record_start_time + (i + 1) * 30,
-                entity.hypnogram[i].dateRange.endInclusive.toEpochSecond()
-            )
-            assertEquals(sleepStageOf(json.hypnogram[i]), entity.hypnogram[i].stage)
-        }
+        assertEquals(5, entity.hypnogram.size)
+        assertEquals(createSlice(0, 60, SleepStage.WAKE), entity.hypnogram[0])
+        assertEquals(createSlice(60, 180, SleepStage.LIGHT_SLEEP), entity.hypnogram[1])
+        assertEquals(createSlice(180, 240, SleepStage.DEEP_SLEEP), entity.hypnogram[2])
+        assertEquals(createSlice(240, 300, SleepStage.REM), entity.hypnogram[3])
+        assertEquals(createSlice(300, 360, SleepStage.UNKNOWN), entity.hypnogram[4])
     }
 
-    private fun createJson(hypnogram: List<Int>) =
+    private fun createJson(hypnogram: List<Int>, epochSeconds: Long) =
         NightJson(
             "",
-            ZoneId.systemDefault().id,
-            ZonedDateTime.now().withSecond(0).toEpochSecond(),
-            ZonedDateTime.now().withSecond(0).plusSeconds(hypnogram.size * 30L).toEpochSecond(),
+            zoneId.id,
+            epochSeconds,
+            epochSeconds + hypnogram.size * 30L,
             0,
             0,
             0,
@@ -56,5 +55,11 @@ class NightMapperUnitTest {
             0f,
             hypnogram
         )
+
+    private fun createSlice(start: Long, end: Long, stage: SleepStage): HypnogramSlice {
+        val dateRange = ZonedDateTime.ofInstant(Instant.ofEpochSecond(start), zoneId)..ZonedDateTime.ofInstant(Instant.ofEpochSecond(end), zoneId)
+        return HypnogramSlice(dateRange, stage)
+    }
+
 
 }

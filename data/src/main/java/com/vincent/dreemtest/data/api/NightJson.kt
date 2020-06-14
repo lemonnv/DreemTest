@@ -2,7 +2,7 @@ package com.vincent.dreemtest.data.api
 
 import com.vincent.dreemtest.domain.entity.Night
 import com.vincent.dreemtest.domain.entity.SleepStage
-import com.vincent.dreemtest.domain.entity.SleepStageValue
+import com.vincent.dreemtest.domain.entity.HypnogramSlice
 import java.lang.RuntimeException
 import java.time.Duration
 import java.time.Instant
@@ -52,20 +52,26 @@ data class NightJson(
         )
     }
 
-    private fun buildHypnogram(): List<SleepStageValue> {
+    private fun buildHypnogram(): List<HypnogramSlice> {
         val zoneId = ZoneId.of(timezone)
-        return hypnogram.mapIndexed { index: Int, value: Int ->
-            SleepStageValue(
-                zoneDateTimeOf(
-                    record_start_time + index * 30L,
-                    zoneId
-                )..zoneDateTimeOf(
-                    record_start_time + (index + 1) * 30,
-                    zoneId
-                ),
-                sleepStageOf(value)
-            )
+
+        val result = mutableListOf<HypnogramSlice>()
+        var i = 0
+        while (i < hypnogram.size) {
+            val start = record_start_time + i * 30L
+            val stage = sleepStageOf(hypnogram[i])
+            var j = i
+            while (j < hypnogram.size && stage == sleepStageOf(hypnogram[j])) {
+                ++j
+            }
+            val end = record_start_time + j * 30L
+            result.add(HypnogramSlice(
+                dateRange = zoneDateTimeOf(start, zoneId)..zoneDateTimeOf(end, zoneId),
+                stage = stage
+            ))
+            i = j
         }
+        return result
     }
 
 }

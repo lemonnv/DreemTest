@@ -7,7 +7,7 @@ enum class SleepStage: Serializable {
     UNKNOWN, WAKE, LIGHT_SLEEP, DEEP_SLEEP, REM
 }
 
-data class SleepStageValue(
+data class HypnogramSlice(
     val dateRange: ClosedRange<ZonedDateTime>,
     val stage: SleepStage
 ): Serializable
