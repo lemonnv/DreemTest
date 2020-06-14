@@ -1,4 +1,4 @@
-package com.vincent.dreemtest.common
+package com.vincent.dreemtest.common.binding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.vincent.dreemtest.BR
+import com.vincent.dreemtest.common.BaseFragment
 
 abstract class BaseDataBindingFragment<ViewModel : androidx.lifecycle.ViewModel, DataBinding : ViewDataBinding> :
     BaseFragment<ViewModel>() {

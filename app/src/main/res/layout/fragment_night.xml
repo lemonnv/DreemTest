@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".dashboard.night.NightFragment">
 
@@ -20,12 +21,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_3"
-            android:text="@{viewModel.title}"
             android:textAppearance="@style/TextAppearance.Headline5"
             android:textColor="@color/onBackground500"
             app:layout_constraintBottom_toBottomOf="@id/buttonClose"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/buttonClose"
+            binding:date="@{viewModel.date}"
+            binding:format="@{@string/night_date_format}"
             tools:text="Thu, Apr 29" />
 
         <ImageButton
@@ -71,6 +73,8 @@
                 android:textColor="@color/primary500"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textBedtime"
+                binding:format="@{@string/night_time_format}"
+                binding:time="@{viewModel.bedtime}"
                 tools:text="23:17" />
 
             <TextView
@@ -92,6 +96,8 @@
                 android:textColor="@color/primary500"
                 app:layout_constraintEnd_toEndOf="@id/textWakeupTime"
                 app:layout_constraintTop_toBottomOf="@id/textWakeupTime"
+                binding:format="@{@string/night_time_format}"
+                binding:time="@{viewModel.wakeUpTime}"
                 tools:text="7:30" />
 
             <TextView
@@ -113,6 +119,8 @@
                 android:textColor="@color/primary500"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textFallingAsleep"
+                binding:format="@{@string/night_time_format}"
+                binding:time="@{viewModel.fallAsleepTime}"
                 tools:text="23:52" />
 
             <TextView
@@ -134,6 +142,8 @@
                 android:textColor="@color/primary500"
                 app:layout_constraintEnd_toEndOf="@id/textAwakeTime"
                 app:layout_constraintTop_toBottomOf="@id/textAwakeTime"
+                binding:format="@{@string/night_time_format}"
+                binding:time="@{viewModel.awakeTime}"
                 tools:text="7:30" />
 
             <View
@@ -163,6 +173,7 @@
                 android:textColor="@color/primary500"
                 app:layout_constraintStart_toStartOf="@id/textQuality"
                 app:layout_constraintTop_toBottomOf="@id/textQuality"
+                binding:percentage="@{viewModel.quality}"
                 tools:text="90%" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

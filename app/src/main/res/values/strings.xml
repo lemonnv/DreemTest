@@ -3,6 +3,8 @@
     <string name="dashboard_title">Dashboard</string>
     <string name="card_night_date_format">EEE, MMM d</string>
     <string name="card_night_score">Score: %d</string>
+    <string name="night_date_format">EEE, MMM d</string>
+    <string name="night_time_format">HH:mm</string>
     <string name="night_bedtime">Bedtime</string>
     <string name="night_wakeup_time">Wake-up</string>
     <string name="night_falling_asleep">Fall asleep</string>

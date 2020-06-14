@@ -3,7 +3,7 @@ package com.vincent.dreemtest.dashboard.night
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
-import com.vincent.dreemtest.common.BaseDataBindingFragment
+import com.vincent.dreemtest.common.binding.BaseDataBindingFragment
 import com.vincent.dreemtest.databinding.FragmentNightBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
