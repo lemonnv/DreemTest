@@ -10,4 +10,9 @@
     <string name="night_falling_asleep">Fall asleep</string>
     <string name="night_awake_time">Awake</string>
     <string name="night_quality">Quality</string>
+    <string name="sleep_stage_wake">Wake</string>
+    <string name="sleep_stage_light">Light</string>
+    <string name="sleep_stage_deep">Deep</string>
+    <string name="sleep_stage_rem">REM</string>
+    <string name="sleep_stage_unknown">Off</string>
 </resources>
