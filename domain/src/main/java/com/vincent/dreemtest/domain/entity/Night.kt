@@ -1,5 +1,6 @@
 package com.vincent.dreemtest.domain.entity
 
+import java.io.Serializable
 import java.time.Duration
 import java.time.ZonedDateTime
 
@@ -13,4 +14,4 @@ data class Night(
     val numberOfMove: Int,
     val heartRateAverage: Float,
     val hypnogram: List<SleepStageValue>
-)
+): Serializable

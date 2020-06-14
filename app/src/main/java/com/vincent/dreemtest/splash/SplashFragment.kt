@@ -23,7 +23,7 @@ class SplashFragment: BaseFragment<SplashViewModel>() {
             when (it) {
                 SplashViewModel.Intent.ShowDashboard -> SplashFragmentDirections.actionSplashFragmentToNavDashboard()
                 else -> null
-            }?.run {
+            }?.apply {
                 findNavController().navigate(this)
             }
         }

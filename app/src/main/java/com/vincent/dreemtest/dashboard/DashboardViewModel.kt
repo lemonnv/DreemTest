@@ -17,7 +17,7 @@ class DashboardViewModel: BaseViewModel() {
     val state = MutableLiveData<State>()
 
     sealed class Intent {
-        data class ShowNightDetails(val analysis: Night)
+        data class ShowNightDetails(val night: Night): Intent()
     }
 
     val intent = SingleLiveEvent<Intent>()
@@ -31,6 +31,12 @@ class DashboardViewModel: BaseViewModel() {
         getNights.executeInViewModelScope {
             state.value = State.Idle
             nights.value = it.getOrNull() ?: listOf()
+        }
+    }
+
+    fun select(id: String) {
+        nights.value?.firstOrNull { it.id == id }?.apply {
+            intent.value = Intent.ShowNightDetails(this)
         }
     }
 

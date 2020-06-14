@@ -8,6 +8,8 @@ class NightViewModel(entity: Night): BaseViewModel() {
 
     val title = MutableLiveData<String>()
 
+    val quality = MutableLiveData<String>()
+
     fun close() {
 
     }

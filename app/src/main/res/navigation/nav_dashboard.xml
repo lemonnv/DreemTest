@@ -9,5 +9,17 @@
         android:id="@+id/dashboardFragment"
         android:name="com.vincent.dreemtest.dashboard.DashboardFragment"
         android:label="fragment_dashbaord"
-        tools:layout="@layout/fragment_dashbaord" />
+        tools:layout="@layout/fragment_dashbaord" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_nightFragment"
+            app:destination="@id/nightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nightFragment"
+        android:name="com.vincent.dreemtest.dashboard.night.NightFragment"
+        android:label="fragment_night"
+        tools:layout="@layout/fragment_night" >
+        <argument android:name="night"
+            app:argType="com.vincent.dreemtest.domain.entity.Night" />
+    </fragment>
 </navigation>

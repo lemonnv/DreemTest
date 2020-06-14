@@ -2,6 +2,7 @@ package com.vincent.dreemtest.dashboard
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import com.vincent.dreemtest.common.BaseFragment
 
@@ -28,6 +29,15 @@ class DashboardFragment: BaseFragment<DashboardViewModel>(), DataBindingAdapter.
             layoutRefresh.isRefreshing = it is DashboardViewModel.State.Loading
         }
 
+        viewModel.intent.observe {
+            when (it) {
+                is DashboardViewModel.Intent.ShowNightDetails -> DashboardFragmentDirections.actionDashboardFragmentToNightFragment(it.night)
+                else -> null
+            }?.apply {
+                findNavController().navigate(this)
+            }
+        }
+
         recyclerView.adapter = adapter
         viewModel.load()
         viewModel.nights.observe { nights ->
@@ -37,7 +47,7 @@ class DashboardFragment: BaseFragment<DashboardViewModel>(), DataBindingAdapter.
     }
 
     override fun onItemClick(item: NightCardViewModel) {
-
+        viewModel.select(item.id)
     }
 
     private class Adapter(listener: OnItemClickListener<NightCardViewModel>): DataBindingAdapter<NightCardViewModel>(DiffCallback(), listener) {
