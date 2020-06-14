@@ -13,6 +13,12 @@
     <style name="TextAppearance.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="fontFamily">@font/galanogrotesque_semibold</item>
     </style>
+    <style name="TextAppearance.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/galanogrotesque_semibold</item>
+    </style>
+    <style name="TextAppearance.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/galanogrotesque_medium</item>
+    </style>
 
     <style name="TextAppearance.Body" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">@font/galanogrotesque_semibold</item>

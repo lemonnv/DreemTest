@@ -9,11 +9,14 @@ import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 
-abstract class BaseFragment: Fragment() {
+abstract class BaseFragment<ViewModel: androidx.lifecycle.ViewModel>: Fragment() {
 
     @get:LayoutRes
     abstract val layoutId: Int
+
+    abstract val viewModel: ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
