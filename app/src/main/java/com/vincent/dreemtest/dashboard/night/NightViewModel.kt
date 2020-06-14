@@ -3,6 +3,7 @@ package com.vincent.dreemtest.dashboard.night
 import androidx.lifecycle.MutableLiveData
 import com.vincent.dreemtest.common.BaseViewModel
 import com.vincent.dreemtest.domain.entity.Night
+import java.time.LocalTime
 import java.time.ZonedDateTime
 
 class NightViewModel(entity: Night): BaseViewModel() {
@@ -24,6 +25,10 @@ class NightViewModel(entity: Night): BaseViewModel() {
     val awakeTime = MutableLiveData(entity.sleepDateRange.endInclusive.toLocalTime())
 
     val quality = MutableLiveData<Float>(entity.sleepScore)
+
+    val onsetDuration = MutableLiveData(LocalTime.of(entity.sleepOnsetDuration.toHours().toInt(), entity.sleepOnsetDuration.toMinutes().toInt()))
+
+    val numberOfMoves = MutableLiveData(entity.numberOfMove)
 
     val hypnogram = MutableLiveData(entity.hypnogram)
 

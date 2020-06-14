@@ -15,4 +15,6 @@
     <string name="sleep_stage_deep">Deep</string>
     <string name="sleep_stage_rem">REM</string>
     <string name="sleep_stage_unknown">Off</string>
+    <string name="night_onset_duration">Onset duration</string>
+    <string name="night_moves">Moves</string>
 </resources>
