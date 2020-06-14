@@ -43,7 +43,7 @@ class HypnogramChartView @JvmOverloads constructor(
         with(lineChart.xAxis) {
             setDrawAxisLine(false)
             setDrawGridLines(false)
-            setDrawLabels(true)
+            setDrawLabels(false)
             position = com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM
             yOffset = 0f
         }
