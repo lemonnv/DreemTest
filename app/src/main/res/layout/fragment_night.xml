@@ -185,10 +185,11 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.6" />
 
-        <View
+        <com.vincent.dreemtest.common.component.HypnogramChartView
             android:id="@+id/chart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            binding:data="@{viewModel.hypnogram}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutMetrics" />
 

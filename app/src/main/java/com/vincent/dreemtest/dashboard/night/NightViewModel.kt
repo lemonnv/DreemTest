@@ -25,6 +25,8 @@ class NightViewModel(entity: Night): BaseViewModel() {
 
     val quality = MutableLiveData<Float>(entity.sleepScore)
 
+    val hypnogram = MutableLiveData(entity.hypnogram)
+
     fun close() {
         intent.value = Intent.Back
     }
