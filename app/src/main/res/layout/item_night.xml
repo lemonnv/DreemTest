@@ -32,12 +32,12 @@
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                binding:date="@{viewModel.date}"
-                binding:format="@{@string/night_date_format}"
                 android:textAppearance="@style/TextAppearance.Headline5"
                 android:textColor="@color/onSurface500"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                binding:date="@{viewModel.date}"
+                binding:format="@{@string/night_date_format}"
                 tools:text="Last night" />
 
             <TextView
@@ -67,10 +67,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/night_onset_duration"
-                app:layout_constraintBottom_toTopOf="@+id/textOnsetDurationValue"
-                app:layout_constraintStart_toStartOf="parent"
                 android:textAppearance="@style/TextAppearance.Body"
-                android:textColor="@color/onSurface500" />
+                android:textColor="@color/onSurface500"
+                app:layout_constraintBottom_toTopOf="@+id/textOnsetDurationValue"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textOnsetDurationValue"
@@ -89,10 +89,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/space_3"
-                app:layout_constraintDimensionRatio="1"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/textTitle"
+                binding:percentage="@{viewModel.quality}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

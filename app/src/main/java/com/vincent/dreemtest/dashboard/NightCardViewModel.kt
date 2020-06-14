@@ -18,7 +18,7 @@ internal fun Night.toCardViewModel(): NightCardViewModel {
     return NightCardViewModel(
         id = id,
         date = recordDateRange.endInclusive,
-        sleepDuration = recordDateRange.endInclusive.timeSince(recordDateRange.start),
+        sleepDuration = recordDateRange.start.timeSince(recordDateRange.endInclusive),
         sleepOnsetDuration = sleepOnsetDuration.toLocalTime(),
         quality = sleepScore
     )
@@ -26,4 +26,4 @@ internal fun Night.toCardViewModel(): NightCardViewModel {
 
 private fun ZonedDateTime.timeSince(other: ZonedDateTime): LocalTime = Duration.between(this, other).toLocalTime()
 
-private fun Duration.toLocalTime(): LocalTime = LocalTime.of(toHours().toInt(), toMinutes().toInt(), seconds.toInt())
+private fun Duration.toLocalTime(): LocalTime = LocalTime.ofSecondOfDay(seconds)
