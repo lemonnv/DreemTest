@@ -7,6 +7,13 @@
     <color name="background500">#111958</color>
     <color name="onBackground500">#FFFFFF</color>
     <color name="surface500">#EEECF6</color>
+
+    <color name="onSurface100">#3365656e</color>
     <color name="onSurface500">#65656e</color>
+
+    <color name="primary100">#33ff0064</color>
+    <color name="primary200">#88ff0064</color>
+    <color name="primary300">#aa0064</color>
+    <color name="primary400">#dd0064</color>
     <color name="primary500">#ff0064</color>
 </resources>

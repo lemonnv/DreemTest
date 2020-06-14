@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vincent.dreemtest.dashboard.night.NightViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_3"
+            android:text="@{viewModel.title}"
+            android:textAppearance="@style/TextAppearance.Headline5"
+            android:textColor="@color/onBackground500"
+            app:layout_constraintBottom_toBottomOf="@id/buttonClose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/buttonClose"
+            tools:text="Thu, Apr 29" />
+
+        <ImageButton
+            android:id="@+id/buttonClose"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/space_3"
+            android:layout_marginEnd="@dimen/space_3"
+            android:background="@null"
+            android:onClick="@{() -> viewModel.close()}"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_round_cancel_24"
+            android:tint="@color/onBackground500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutMetrics"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/space_3"
+            android:background="@color/surface500"
+            android:paddingHorizontal="@dimen/space_3"
+            app:layout_constraintBottom_toTopOf="@id/guidelineVertical"
+            app:layout_constraintTop_toBottomOf="@id/buttonClose">
+
+            <TextView
+                android:id="@+id/textBedtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/night_bedtime"
+                android:textAppearance="@style/TextAppearance.Body"
+                android:textColor="@color/onSurface500"
+                android:layout_marginTop="@dimen/space_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textBedtimeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Headline6"
+                android:textColor="@color/primary500"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textBedtime"
+                tools:text="23:17" />
+
+            <TextView
+                android:id="@+id/textWakeupTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/night_wakeup_time"
+                android:textAppearance="@style/TextAppearance.Body"
+                android:textColor="@color/onSurface500"
+                android:layout_marginTop="@dimen/space_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textWakeupTimeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Headline6"
+                android:textColor="@color/primary500"
+                app:layout_constraintEnd_toEndOf="@id/textWakeupTime"
+                app:layout_constraintTop_toBottomOf="@id/textWakeupTime"
+                tools:text="7:30" />
+
+            <TextView
+                android:id="@+id/textFallingAsleep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/night_falling_asleep"
+                android:textAppearance="@style/TextAppearance.Body"
+                android:textColor="@color/onSurface500"
+                android:layout_marginTop="@dimen/space_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textBedtimeValue" />
+
+            <TextView
+                android:id="@+id/textFallingAsleepValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Headline6"
+                android:textColor="@color/primary500"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textFallingAsleep"
+                tools:text="23:52" />
+
+            <TextView
+                android:id="@+id/textAwakeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/night_awake_time"
+                android:textAppearance="@style/TextAppearance.Body"
+                android:textColor="@color/onSurface500"
+                android:layout_marginTop="@dimen/space_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textWakeupTimeValue" />
+
+            <TextView
+                android:id="@+id/textAwakeTimeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Headline6"
+                android:textColor="@color/primary500"
+                app:layout_constraintEnd_toEndOf="@id/textAwakeTime"
+                app:layout_constraintTop_toBottomOf="@id/textAwakeTime"
+                tools:text="7:30" />
+            
+            <View
+                android:id="@+id/divider"
+                app:layout_constraintTop_toBottomOf="@id/textFallingAsleepValue"
+                android:layout_marginTop="@dimen/space_2"
+                android:background="@color/onSurface100"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:id="@+id/textQuality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/night_quality"
+                android:textAppearance="@style/TextAppearance.Body"
+                android:textColor="@color/onSurface500"
+                android:layout_marginTop="@dimen/space_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <TextView
+                android:id="@+id/textQualityValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Headline6"
+                android:textColor="@color/primary500"
+                app:layout_constraintStart_toStartOf="@id/textQuality"
+                app:layout_constraintTop_toBottomOf="@id/textQuality"
+                tools:text="90%" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <View
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutMetrics" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
