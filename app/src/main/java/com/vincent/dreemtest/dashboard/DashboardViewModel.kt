@@ -18,6 +18,7 @@ class DashboardViewModel: BaseViewModel() {
 
     sealed class Intent {
         data class ShowNightDetails(val night: Night): Intent()
+        data class ShowToast(val error: Exception): Intent()
     }
 
     val intent = SingleLiveEvent<Intent>()

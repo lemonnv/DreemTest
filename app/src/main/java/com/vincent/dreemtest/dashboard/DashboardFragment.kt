@@ -2,6 +2,7 @@ package com.vincent.dreemtest.dashboard
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import com.vincent.dreemtest.common.BaseFragment
@@ -11,7 +12,8 @@ import com.vincent.dreemtest.common.adapter.DataBindingAdapter
 import kotlinx.android.synthetic.main.fragment_dashbaord.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class DashboardFragment: BaseFragment<DashboardViewModel>(), DataBindingAdapter.OnItemClickListener<NightCardViewModel> {
+class DashboardFragment : BaseFragment<DashboardViewModel>(),
+    DataBindingAdapter.OnItemClickListener<NightCardViewModel> {
 
     override val layoutId: Int = R.layout.fragment_dashbaord
 
@@ -31,32 +33,42 @@ class DashboardFragment: BaseFragment<DashboardViewModel>(), DataBindingAdapter.
 
         viewModel.intent.observe {
             when (it) {
-                is DashboardViewModel.Intent.ShowNightDetails -> DashboardFragmentDirections.actionDashboardFragmentToNightFragment(it.night)
-                else -> null
-            }?.apply {
-                findNavController().navigate(this)
+                is DashboardViewModel.Intent.ShowNightDetails -> findNavController().navigate(
+                    DashboardFragmentDirections.actionDashboardFragmentToNightFragment(it.night)
+                )
+                is DashboardViewModel.Intent.ShowToast -> Toast.makeText(
+                    context,
+                    it.error.localizedMessage,
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
 
         recyclerView.adapter = adapter
-        viewModel.load()
         viewModel.nights.observe { nights ->
             adapter.submitList(nights.map { it.toCardViewModel() })
         }
-
+        viewModel.load()
     }
 
     override fun onItemClick(item: NightCardViewModel) {
         viewModel.select(item.id)
     }
 
-    private class Adapter(listener: OnItemClickListener<NightCardViewModel>): DataBindingAdapter<NightCardViewModel>(DiffCallback(), listener) {
+    private class Adapter(listener: OnItemClickListener<NightCardViewModel>) :
+        DataBindingAdapter<NightCardViewModel>(DiffCallback(), listener) {
 
-        class DiffCallback: DiffUtil.ItemCallback<NightCardViewModel>() {
+        class DiffCallback : DiffUtil.ItemCallback<NightCardViewModel>() {
 
-            override fun areItemsTheSame(oldItem: NightCardViewModel, newItem: NightCardViewModel): Boolean = oldItem.id == newItem.id
+            override fun areItemsTheSame(
+                oldItem: NightCardViewModel,
+                newItem: NightCardViewModel
+            ): Boolean = oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: NightCardViewModel, newItem: NightCardViewModel): Boolean = true
+            override fun areContentsTheSame(
+                oldItem: NightCardViewModel,
+                newItem: NightCardViewModel
+            ): Boolean = true
 
         }
 
