@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sleep_stage_wake">#FFB0CD</color>
+    <color name="sleep_stage_light">#777EFF</color>
+    <color name="sleep_stage_deep">#4F3DC8</color>
+    <color name="sleep_stage_rem">#4DBADA</color>
+</resources>

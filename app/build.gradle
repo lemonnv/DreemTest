@@ -41,6 +41,10 @@ android {
 
 }
 
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     implementation project(':domain')
     implementation project(':data')
@@ -66,5 +70,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
 
+    // Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }
