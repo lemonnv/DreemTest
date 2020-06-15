@@ -24,12 +24,13 @@ class QualityView @JvmOverloads constructor(context: Context, attributeSet: Attr
         setWillNotDraw(false)
         textView.setTextAppearance(R.style.TextAppearance_Headline4)
         textView.setTextColor(ContextCompat.getColor(context, R.color.onSurface500))
-        textView.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT).apply { gravity = Gravity.CENTER }
+        textView.layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT).apply { gravity = Gravity.CENTER }
         textView.gravity = Gravity.CENTER
         addView(textView)
         setPercentage(textView, 0f)
 
         paint.style = Paint.Style.STROKE
+        paint.strokeCap = Paint.Cap.ROUND
         paint.strokeWidth = context.resources.displayMetrics.density * 4f
     }
 
