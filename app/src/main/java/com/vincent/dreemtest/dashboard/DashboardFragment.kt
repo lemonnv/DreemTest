@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DiffUtil
 import com.vincent.dreemtest.common.BaseFragment
 
 import com.vincent.dreemtest.R
@@ -19,11 +18,12 @@ class DashboardFragment : BaseFragment<DashboardViewModel>(),
 
     override val viewModel: DashboardViewModel by viewModel()
 
-    private val adapter = Adapter(this)
+    private val adapter = DashboardAdapter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        layoutRefresh.setColorSchemeResources(R.color.primary100, R.color.primary300, R.color.primary500)
         layoutRefresh.setOnRefreshListener {
             viewModel.load()
         }
@@ -53,27 +53,6 @@ class DashboardFragment : BaseFragment<DashboardViewModel>(),
 
     override fun onItemClick(item: NightCardViewModel) {
         viewModel.select(item.id)
-    }
-
-    private class Adapter(listener: OnItemClickListener<NightCardViewModel>) :
-        DataBindingAdapter<NightCardViewModel>(DiffCallback(), listener) {
-
-        class DiffCallback : DiffUtil.ItemCallback<NightCardViewModel>() {
-
-            override fun areItemsTheSame(
-                oldItem: NightCardViewModel,
-                newItem: NightCardViewModel
-            ): Boolean = oldItem.id == newItem.id
-
-            override fun areContentsTheSame(
-                oldItem: NightCardViewModel,
-                newItem: NightCardViewModel
-            ): Boolean = true
-
-        }
-
-        override fun getItemViewType(position: Int): Int = R.layout.item_night
-
     }
 
 }
