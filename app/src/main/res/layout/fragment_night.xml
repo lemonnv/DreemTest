@@ -172,12 +172,12 @@
                 android:id="@+id/quality"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_max="140dp"
                 android:layout_marginTop="@dimen/space_2"
                 android:layout_marginBottom="@dimen/space_2"
                 app:layout_constraintBottom_toTopOf="@+id/textOnsetDuration"
                 app:layout_constraintDimensionRatio="1"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_max="140dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textQuality"
                 binding:percentage="@{viewModel.quality}" />
@@ -222,9 +222,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/space_2"
+                android:text="@{String.valueOf(viewModel.numberOfMoves)}"
                 android:textAppearance="@style/TextAppearance.Headline6"
                 android:textColor="@color/primary500"
-                android:text="@{String.valueOf(viewModel.numberOfMoves)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/textMoves"
                 tools:text="7" />
@@ -234,10 +234,10 @@
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.65"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
 
         <com.vincent.dreemtest.common.component.HypnogramChartView
             android:id="@+id/chart"
@@ -261,8 +261,23 @@
             android:textAppearance="@style/TextAppearance.Body"
             android:textColor="@color/onBackground500"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textStageLight"
+            app:layout_constraintEnd_toStartOf="@id/textStageRem"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textStageRem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_3"
+            android:drawableBottom="@drawable/ic_circle_10dp"
+            android:drawablePadding="@dimen/space_1"
+            android:drawableTint="@color/sleep_stage_rem"
+            android:text="@string/sleep_stage_rem"
+            android:textAppearance="@style/TextAppearance.Body"
+            android:textColor="@color/onBackground500"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textStageLight"
+            app:layout_constraintStart_toEndOf="@id/textStageWake" />
 
         <TextView
             android:id="@+id/textStageLight"
@@ -277,12 +292,13 @@
             android:textColor="@color/onBackground500"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/textStageDeep"
-            app:layout_constraintStart_toEndOf="@id/textStageWake" />
+            app:layout_constraintStart_toEndOf="@id/textStageRem" />
 
         <TextView
             android:id="@+id/textStageDeep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_3"
             android:layout_marginBottom="@dimen/space_3"
             android:drawableBottom="@drawable/ic_circle_10dp"
             android:drawablePadding="@dimen/space_1"
@@ -291,25 +307,8 @@
             android:textAppearance="@style/TextAppearance.Body"
             android:textColor="@color/onBackground500"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textStageRem"
-            app:layout_constraintStart_toEndOf="@id/textStageLight" />
-
-        <TextView
-            android:id="@+id/textStageRem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/space_3"
-            android:layout_marginBottom="@dimen/space_3"
-            android:drawableBottom="@drawable/ic_circle_10dp"
-            android:drawablePadding="@dimen/space_1"
-
-            android:drawableTint="@color/sleep_stage_rem"
-            android:text="@string/sleep_stage_rem"
-            android:textAppearance="@style/TextAppearance.Body"
-            android:textColor="@color/onBackground500"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textStageDeep" />
+            app:layout_constraintStart_toEndOf="@id/textStageLight" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
